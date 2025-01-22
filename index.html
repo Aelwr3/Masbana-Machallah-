@@ -16,6 +16,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      animation: fadeIn 1s ease-in-out;
     }
 
     h1 {
@@ -23,6 +24,8 @@
       font-size: 32px;
       margin-bottom: 20px;
       text-align: center;
+      opacity: 0;
+      animation: slideIn 1s ease-in-out forwards 0.5s;
     }
 
     .container {
@@ -33,6 +36,8 @@
       width: 100%;
       max-width: 400px;
       text-align: center;
+      transform: translateY(-50px);
+      animation: slideUp 1s ease-out forwards 1s;
     }
 
     input[type="password"] {
@@ -45,6 +50,8 @@
       font-size: 18px;
       outline: none;
       transition: all 0.3s ease-in-out;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards 1.5s;
     }
 
     input[type="password"]:focus {
@@ -63,6 +70,8 @@
       font-size: 18px;
       cursor: pointer;
       transition: background-color 0.3s;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards 2s;
     }
 
     button:hover {
@@ -88,6 +97,7 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       text-align: center;
       z-index: 1000;
+      animation: zoomIn 0.5s ease-in-out;
     }
 
     .modal h2 {
@@ -119,11 +129,37 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
       z-index: 999;
+      animation: fadeInOverlay 1s ease-in-out;
     }
 
     .emoji {
       font-size: 48px;
       animation: bounce 1s infinite;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInOverlay {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-100%); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @keyframes bounce {
