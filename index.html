@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصبنة مشاء الله - الدخول</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+        body {
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1 {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            font-size: 1.2rem;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #28a745;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 مرحبا بكم في مصبنة مشاء الله 🌟</h1>
+        <input type="password" id="codeInput" placeholder="أدخل الكود 🔑">
+        <button onclick="checkCode()">الدخول 🚪</button>
+    </div>
+    <script>
+        function checkCode() {
+            const code = document.getElementById('codeInput').value;
+            if (code === '202501') {
+                window.location.href = 'client.html'; // رابط الصفحة التالية
+            } else {
+                alert('الكود غير صحيح ❌');
+            }
+        }
+    </script>
+</body>
+</html>
