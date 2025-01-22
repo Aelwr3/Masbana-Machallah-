@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مصبنة مشاء الله - إدخال الكود</title>
+  <!-- إضافة خط Amiri -->
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Amiri', serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input[type="password"] {
+      font-family: 'Amiri', serif;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      font-family: 'Amiri', serif;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>مرحبا بكم في مصبنة مشاء الله</h1>
+    <p>من فضلك، أدخل الكود للمتابعة</p>
+    <input type="password" id="codeInput" placeholder="ادخل الكود هنا">
+    <button id="confirmButton">تأكيد</button>
+    <button id="resetButton">إعادة تعيين</button>
+    <p id="errorMessage" class="error" style="display: none;">الكود غير صحيح!</p>
+  </div>
+
+  <script>
+    const correctCode = "202501";
+    const confirmButton = document.getElementById('confirmButton');
+    const resetButton = document.getElementById('resetButton');
+    const codeInput = document.getElementById('codeInput');
+    const errorMessage = document.getElementById('errorMessage');
+
+    confirmButton.addEventListener('click', () => {
+      if (codeInput.value === correctCode) {
+        // إذا الكود صحيح، ننتقل إلى الصفحة التالية
+        alert('الكود صحيح! جاري تحويلك...');
+        localStorage.setItem('accessGranted', true); // تخزين حالة الدخول
+        window.location.href = "customer-selection.html"; // اسم الصفحة التالية
+      } else {
+        errorMessage.style.display = 'block'; // إظهار رسالة الخطأ
+      }
+    });
+
+    resetButton.addEventListener('click', () => {
+      codeInput.value = ''; // مسح الإدخال
+      errorMessage.style.display = 'none'; // إخفاء رسالة الخطأ
+    });
+  </script>
+</body>
+</html>
