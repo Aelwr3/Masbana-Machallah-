@@ -64,6 +64,59 @@
       font-size: 14px;
       margin-top: 10px;
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .modal h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .modal button {
+      background-color: #28a745;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .emoji {
+      font-size: 48px;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -76,19 +129,29 @@
     <p id="errorMessage" class="error" style="display: none;">الكود غير صحيح!</p>
   </div>
 
+  <!-- نافذة منبثقة -->
+  <div class="overlay" id="overlay"></div>
+  <div class="modal" id="successModal">
+    <h2>✅ تم الدخول بنجاح!</h2>
+    <p>مرحبًا بك في مصبنة مشاء الله.</p>
+    <span class="emoji">✨</span>
+    <button onclick="proceed()">الانتقال</button>
+  </div>
+
   <script>
     const correctCode = "202501";
     const confirmButton = document.getElementById('confirmButton');
     const resetButton = document.getElementById('resetButton');
     const codeInput = document.getElementById('codeInput');
     const errorMessage = document.getElementById('errorMessage');
+    const successModal = document.getElementById('successModal');
+    const overlay = document.getElementById('overlay');
 
     confirmButton.addEventListener('click', () => {
       if (codeInput.value === correctCode) {
-        // إذا الكود صحيح، ننتقل إلى الصفحة التالية
-        alert('الكود صحيح! جاري تحويلك...');
-        localStorage.setItem('accessGranted', true); // تخزين حالة الدخول
-        window.location.href = "customer-selection.html"; // اسم الصفحة التالية
+        // إذا الكود صحيح، نعرض النافذة المنبثقة
+        successModal.style.display = 'block';
+        overlay.style.display = 'block';
       } else {
         errorMessage.style.display = 'block'; // إظهار رسالة الخطأ
       }
@@ -98,6 +161,11 @@
       codeInput.value = ''; // مسح الإدخال
       errorMessage.style.display = 'none'; // إخفاء رسالة الخطأ
     });
+
+    function proceed() {
+      localStorage.setItem('accessGranted', true); // تخزين حالة الدخول
+      window.location.href = "customer-selection.html"; // الانتقال إلى الصفحة التالية
+    }
   </script>
 </body>
 </html>
