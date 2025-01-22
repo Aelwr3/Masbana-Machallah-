@@ -5,47 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مصبنة مشاء الله - الدخول</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
         body {
             direction: rtl;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Roboto', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background: #f3f4f6;
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
         }
         .container {
-            background-color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             padding: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
             text-align: center;
-            max-width: 400px;
             width: 100%;
+            max-width: 400px;
         }
         h1 {
             font-weight: 700;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 20px;
+            letter-spacing: 1.2px;
         }
         input {
             font-size: 1.2rem;
-            padding: 10px;
-            width: calc(100% - 24px);
+            padding: 15px;
+            width: 100%;
             margin-bottom: 15px;
-            border: 2px solid #ccc;
+            border: 2px solid #ffffff;
             border-radius: 5px;
             outline: none;
             transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+        input::placeholder {
+            color: #ffffff;
         }
         input:focus {
             border-color: #10b981;
         }
         button {
-            padding: 10px 20px;
+            padding: 15px 25px;
             font-size: 1.2rem;
             background-color: #10b981;
             color: #ffffff;
@@ -61,7 +68,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🌟 مرحبا بكم في مصبنة مشاء الله 🌟</h1>
+        <h1>✨ مرحبا بكم في مصبنة مشاء الله ✨</h1>
         <input type="password" id="codeInput" placeholder="أدخل الكود 🔑">
         <button onclick="checkCode()">الدخول 🚪</button>
     </div>
