@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دخول إلى نظام إدارة المصبنة</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 80%;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .background {
+      background-size: cover;
+      background-position: center;
+      height: 150px;
+      margin-bottom: 20px;
+    }
+
+    .background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .login-form {
+      padding: 20px;
+    }
+
+    .login-form h2 {
+      margin-top: 0;
+    }
+
+    .login-form p {
+      margin-bottom: 20px;
+    }
+
+    .login-form input[type="password"] {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-form button {
+      width: 100%;
+      height: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>مصبنة مشاء الله</h1>
+    </div>
+    <div class="background">
+      <!-- صورة الخلفية -->
+    </div>
+    <div class="login-form">
+      <h2>دخول إلى نظام إدارة المصبنة</h2>
+      <p>يرجى إدخال الكود السري لاستخدام النظام</p>
+      <input type="password" id="password" placeholder="أدخل الكود السري">
+      <button id="login-button">دخول</button>
+      <button id="forgot-password-button">نسيت الكود السري</button>
+    </div>
+  </div>
+  <script>
+    const loginButton = document.getElementById('login-button');
+    const passwordInput = document.getElementById('password');
+
+    loginButton.addEventListener('click', () => {
+      const password = passwordInput.value.trim();
+      if (password === '202501') {
+        window.location.href = 'customers.html';
+      } else {
+        alert('كود سري غير صحيح!');
+      }
+    });
+  </script>
+</body>
+</html>
