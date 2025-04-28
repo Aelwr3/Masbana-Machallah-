@@ -1,115 +1,226 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دخول إلى نظام إدارة المصبنة</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+    <meta charset="UTF-8">
+    <title>نظام التحليل الجنائي الرقمي | v2.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* التصميم الجديد */
+        :root {
+            --hacker-green: #00ff88;
+            --dark-bg: #0a0a0a;
+            --terminal-bg: #001100;
+        }
 
-    .container {
-      width: 80%;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
 
-    .header {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px;
-      border-radius: 10px 10px 0 0;
-    }
+        body {
+            background: var(--dark-bg);
+            color: var(--hacker-green);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    .header h1 {
-      margin: 0;
-      padding: 0;
-    }
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 136, 0.3);
+            animation: scan 3s linear infinite;
+            z-index: 999;
+        }
 
-    .background {
-      background-size: cover;
-      background-position: center;
-      height: 150px;
-      margin-bottom: 20px;
-    }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #004400;
+            background: rgba(0, 20, 0, 0.9);
+            position: relative;
+            box-shadow: 0 0 50px #00ff8822;
+        }
 
-    .background img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        .header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--hacker-green);
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-    .login-form {
-      padding: 20px;
-    }
+        .header h1 {
+            font-size: 2.5em;
+            text-shadow: 0 0 15px #00ff88;
+        }
 
-    .login-form h2 {
-      margin-top: 0;
-    }
+        .evidence-section {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-    .login-form p {
-      margin-bottom: 20px;
-    }
+        .media-preview {
+            border: 3px solid #002200;
+            padding: 10px;
+            background: #000;
+            position: relative;
+        }
 
-    .login-form input[type="password"] {
-      width: 100%;
-      height: 40px;
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+        .media-preview img {
+            width: 100%;
+            height: auto;
+        }
 
-    .login-form button {
-      width: 100%;
-      height: 40px;
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .digital-evidence {
+            background: var(--terminal-bg);
+            padding: 20px;
+            border: 1px solid #003300;
+        }
 
-    .login-form button:hover {
-      background-color: #3e8e41;
-    }
-  </style>
+        .evidence-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #000;
+            border-left: 4px solid var(--hacker-green);
+        }
+
+        .evidence-label {
+            color: #008844;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .evidence-value {
+            font-size: 1.2em;
+            word-break: break-all;
+        }
+
+        .geo-map {
+            height: 400px;
+            border: 2px solid #002200;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .timestamp {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #008844;
+            font-size: 0.9em;
+        }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 0.8; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .glitch-effect {
+            text-shadow: 2px 2px #ff0033, -2px -2px #00ffff;
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .terminal-effect::after {
+            content: "|";
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>مصبنة مشاء الله</h1>
-    </div>
-    <div class="background">
-      <!-- صورة الخلفية -->
-    </div>
-    <div class="login-form">
-      <h2>دخول إلى نظام إدارة المصبنة</h2>
-      <p>يرجى إدخال الكود السري لاستخدام النظام</p>
-      <input type="password" id="password" placeholder="أدخل الكود السري">
-      <button id="login-button">دخول</button>
-      <button id="forgot-password-button">نسيت الكود السري</button>
-    </div>
-  </div>
-  <script>
-    const loginButton = document.getElementById('login-button');
-    const passwordInput = document.getElementById('password');
+    <div class="scan-line"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="glitch-effect">FORE<span style="color:#ff0055">N</span>SIC ANALYS<span style="color:#00ffff">I</span>S SYSTEM</h1>
+        </div>
 
-    loginButton.addEventListener('click', () => {
-      const password = passwordInput.value.trim();
-      if (password === '202501') {
-        window.location.href = 'customers.html';
-      } else {
-        alert('كود سري غير صحيح!');
-      }
-    });
-  </script>
+        <div class="evidence-section">
+            <div class="media-preview">
+                <img src="TIBARI.jpg" alt="الوسائط المحللة">
+            </div>
+
+            <div class="digital-evidence">
+                <div class="evidence-item">
+                    <div class="evidence-label">IP ADDRESS</div>
+                    <div class="evidence-value terminal-effect">192.168.45.123</div>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-label">DEVICE INFO</div>
+                    <div class="evidence-value">
+                        <p>نوع الجهاز: Infinix Hot 30i</p>
+                        <p>نظام التشغيل: Android 13</p>
+                        <p>IMEI: 358756451248978</p>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-label">CONTACT INFO</div>
+                    <div class="evidence-value">
+                        <p>+212 691-393342</p>
+                        <p>+212 644-266053</p>
+                        <p>+212 695-894500</p>
+                    </div>
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-label">SOCIAL LINKS</div>
+                    <div class="evidence-value">
+                        <p>Instagram: @leila_tibari21</p>
+                        <p>Facebook: fb.com/tibari.profile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="geo-map">
+            <iframe 
+                src="https://maps.google.com/maps?q=29.3660282,-9.5945859&z=12&output=embed" 
+                width="100%" 
+                height="100%"
+                style="border:0;"
+                allowfullscreen>
+            </iframe>
+            <div class="timestamp">Last Location Update: 2024-03-15 14:22:18 UTC</div>
+        </div>
+    </div>
+
+    <script>
+        // تأثيرات تفاعلية
+        document.querySelectorAll('.evidence-value').forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.style.textShadow = '0 0 10px #00ff88';
+            });
+            
+            item.addEventListener('mouseout', () => {
+                item.style.textShadow = 'none';
+            });
+        });
+
+        // محاكاة تحديث البيانات
+        setInterval(() => {
+            document.querySelector('.timestamp').innerHTML = 
+                `Last Location Update: ${new Date().toISOString().replace('T', ' ').slice(0, 19)} UTC`;
+        }, 1000);
+    </script>
 </body>
 </html>
